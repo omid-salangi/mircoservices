@@ -2,10 +2,10 @@
 {
     public class SiteSettings
     {
-        public PostgresDbSettings postgresDbSettings;
+        public PostgresDbSettings PostgresDbSettings { get; set; }
     }
     public class PostgresDbSettings
     {
-      public string PostgreDbConnection { get; set; }
+      public string PostgresDbConnection { get; set; }
     }
 }

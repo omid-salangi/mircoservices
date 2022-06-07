@@ -10,6 +10,7 @@ services:
     volumes:
       - mongo_data:/data/db
 
+
   basketdb:
     container_name: basketdb
     restart: always
@@ -37,15 +38,15 @@ services:
     ports:
       - "5050:80"
     volumes:
-      - pgadmin_data:/root/.pgadmin
+      - pgadmin_data:/var/lib/pgadmin
  
-  dbeaver:
-    container_name: dbeaver
-    restart: always
-    ports:
-      - "8080:8978"
-    volumes:
-      - /var/cloudbeaver/workspace:/opt/cloudbeaver/workspace
+  #dbeaver: host.docker.internal
+   # container_name: dbeaver
+   # restart: always
+   # ports:
+   #   - "8080:8978"
+   # volumes:
+   #   - /var/cloudbeaver/workspace:/opt/cloudbeaver/workspace
 
   portainer:
     container_name: portainer
@@ -53,7 +54,7 @@ services:
     ports:
        - "9000:9000"
     volumes:
-      -  /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
 
   catalog.api:
@@ -66,10 +67,9 @@ services:
     ports:
       - "8000:80"
 
-  databaseui:
-    container_name: mongoui
-    ports: 
-      - "3000:3000"
+ # databaseui:
+    #container_name: mongoui
+  #   - "3000:3000"
 
   basket.api:
     container_name: "basket.api"

@@ -13,8 +13,9 @@ services:
   pgadmin:
     image: dpage/pgadmin4:latest
 
-  dbeaver:
-    image: dbeaver/cloudbeaver:latest
+
+  #dbeaver:
+   # image: dbeaver/cloudbeaver:latest
 
   portainer:
     image: portainer/portainer-ce
@@ -25,8 +26,8 @@ services:
       context: .
       dockerfile: Services/Catalog.API/Catalog.API/Dockerfile
 
-  databaseui:
-    image: mongoclient/mongoclient
+  #databaseui:
+   # image: mongoclient/mongoclient
 
   basket.api:
     image: ${DOCKER_REGISTRY-}basketapi

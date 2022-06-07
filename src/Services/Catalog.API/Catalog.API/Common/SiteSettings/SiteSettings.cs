@@ -1,7 +1,4 @@
-﻿using System.Security.AccessControl;
-using MongoDB.Driver;
-
-namespace Catalog.API.Common.SiteSettings
+﻿namespace Catalog.API.Common.SiteSettings
 {
     public class SiteSettings
     {
