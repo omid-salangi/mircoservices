@@ -1,10 +1,10 @@
-﻿using Discount.API.Common.Dependency;
-using Discount.API.Data.Interface;
-using Discount.API.Data.Model;
-using Discount.API.ViewModels;
+﻿using Discount.Grpc.Common.Dependency;
+using Discount.Grpc.Context;
+using Discount.Grpc.Entities;
+using Discount.Grpc.Interface;
 using Microsoft.EntityFrameworkCore;
 
-namespace Discount.API.Data.Repositories
+namespace Discount.Grpc.Repositories
 {
     public class CouponRepository : ICouponRepository , IScopedDependency
     {

@@ -1,7 +1,6 @@
-﻿using Discount.API.Data.Model;
-using Discount.API.ViewModels;
+﻿using Discount.Grpc.Entities;
 
-namespace Discount.API.Data.Interface
+namespace Discount.Grpc.Interface
 {
     public interface ICouponRepository
     {

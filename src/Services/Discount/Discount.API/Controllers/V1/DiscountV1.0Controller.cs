@@ -32,7 +32,7 @@ namespace Discount.API.Controllers.V1
         }
         [HttpPost("[action]")]
         [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<bool>> UpdateDiscount(Coupondto coupon)
+        public async Task<ActionResult<bool>> UpdateDiscount(Coupon coupon)
 
         {
             var res = await _coupon.UpdateCoupon(coupon);
@@ -40,9 +40,9 @@ namespace Discount.API.Controllers.V1
         }
         [HttpPost("[action]")]
         [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<bool>> CreateDiscount(Coupondto coupon)
+        public async Task<ActionResult<bool>> CreateDiscount(Coupon inp)
         {
-            var res = await _coupon.CreateCoupon(coupon);
+            var res = await _coupon.CreateCoupon(inp);
             return Ok(res);
         }
     }
