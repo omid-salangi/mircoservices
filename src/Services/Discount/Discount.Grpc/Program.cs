@@ -11,6 +11,7 @@ var _sitesettings = builder.Configuration.GetSection(nameof(SiteSettings)).Get<S
 
 // Add services to the container.
 builder.Services.AddGrpc();
+builder.Services.AddAutoMappers(); // service
 builder.Services.AddDbContext<DiscountContext>(options =>
 {
     options.UseNpgsql(_sitesettings.PostgresDbSettings.PostgresDbConnection);
@@ -20,7 +21,7 @@ builder.DependencyContainerWithAutofac();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-app.MapGrpcService<GreeterService>();
+app.MapGrpcService<DiscountService>(); // for accepting requests to grpc 
 app.MapGet("/", () => "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
 using (var scope = app.Services.CreateScope())
 {
