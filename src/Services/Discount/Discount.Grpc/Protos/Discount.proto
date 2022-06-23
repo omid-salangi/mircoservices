@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "Discount.Grpc.Protos";
 // we should use properties on this file and set build action  to protof compiler  and if it is for inside request use server
 service DiscountProtoService{
-	rpc GetDiscount(GetDiscountRequest) returns (CouponModel);
+	rpc GetDiscount (GetDiscountRequest) returns (CouponModel);
 	rpc CreateDiscount ( CreateDiscountRequest) returns (CouponModel);
 	rpc DeleteDiscount ( DeleteDiscountRequest) returns (DeleteDiscountResponse);
 	rpc UpdateDiscount ( UpdateDiscountRequest) returns (CouponModel);

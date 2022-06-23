@@ -76,6 +76,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "SiteSettings:RedisSettings:ConnectionString=basketdb:6379"
+      - "SiteSettings:GrpcSettings:DiscountUrl=http://discount.grpc"
     depends_on:
       - basketdb
     ports:
@@ -85,9 +86,19 @@ services:
     container_name: discount.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - " SiteSettings:PostgresDbSettings:PostgresDbConnection=Server=host.docker.internal;Port=5432;Database=DiscountDb;User Id=admin;Password=admin1234;"
+      - "SiteSettings:PostgresDbSettings:PostgresDbConnection=Server=host.docker.internal;Port=5432;Database=DiscountDb;User Id=admin;Password=admin1234;"
     ports:
       - "8002:80"
     depends_on: 
       - discountdb
 
+
+  discount.grpc:
+    container_name: discount.grpc
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "SiteSettings:PostgresDbSettings:PostgresDbConnection=Server=host.docker.internal;Port=5432;Database=DiscountDb;User Id=admin;Password=admin1234;"
+    ports:
+      - "8003:80"
+    depends_on: 
+      - discountdb
