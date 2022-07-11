@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 
 namespace Ordering.Application.Features.Order.Commands.CheckoutOrder
 {
-    public class CheckoutOrderCommand : IRequest<int>
+    public class CheckoutOrderCommand : IRequest<int> // int is response
     {
         public string UserName { get; set; }
         public decimal TotalPrice { get; set; }

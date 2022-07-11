@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Ordering.Application.Model;
+﻿using Ordering.Application.Model;
 
 namespace Ordering.Application.Contracts.Infrastructure
 {
