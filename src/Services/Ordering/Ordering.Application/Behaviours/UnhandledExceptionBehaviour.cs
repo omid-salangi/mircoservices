@@ -25,7 +25,7 @@ namespace Ordering.Application.Behaviours
             catch (Exception e)
             {
                 var requestName = typeof(TRequest).Name;
-                _logger.LogError(e , "Application Requst : UnHandled Exception for Requset {Name} {@Requst}", requestName, request);
+                _logger.LogError(e , "Application Request : UnHandled Exception for Requset {Name} {@Requst}", requestName, request);
                 throw;
             }
         }

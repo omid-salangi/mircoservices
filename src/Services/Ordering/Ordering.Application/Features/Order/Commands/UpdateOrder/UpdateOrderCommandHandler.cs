@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Ordering.Application.Contracts.Persistance;
@@ -30,7 +24,6 @@ namespace Ordering.Application.Features.Order.Commands.UpdateOrder
           if (orderToUpdate == null)
           {
               throw new NotFoundException(nameof(Order), request.Id);
-             _logger.LogError("Order Not exist on database ");
           }
           _mapper.Map(request ,orderToUpdate , typeof(UpdateOrderCommand) , typeof(Domain.Entities.Order));
           await _orderRepository.UpdateAsync(orderToUpdate);

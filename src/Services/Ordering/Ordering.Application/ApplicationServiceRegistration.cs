@@ -11,9 +11,9 @@ namespace Ordering.Application
     {
         public static IServiceCollection AddApplicationServivces(this IServiceCollection services)
         {
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
-            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-            services.AddMediatR(Assembly.GetExecutingAssembly()); // getexecutingassemlby means it will search for related files 
+            services.AddAutoMapper(Assembly.GetExecutingAssembly()); //profile
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly()); // abstractvalidator
+            services.AddMediatR(Assembly.GetExecutingAssembly()); // getexecutingassembly means it will search for related files // irequest and irequesthandler 
           
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
