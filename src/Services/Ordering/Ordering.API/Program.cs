@@ -1,4 +1,8 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Microsoft.VisualBasic;
 using Ordering.Application;
+using Ordering.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +15,7 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddApplicationServivces();
-//builder.Services.AddInfraStructure();
+builder.Services.AddInfrastructureServices(builder.Configuration);
 
 
 var app = builder.Build();
