@@ -16,10 +16,17 @@ namespace Ordering.Infrastructure.Persistance
         }
         public DbSet<Order> Orders { get; set; }
 
-         // customising savechangesasynd()
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Order>()
+                .Property(p => p.TotalPrice)
+                .HasColumnType("decimal(18,2)");
+        }
+        // customising savechangesasynd()
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
-            foreach (var entry in ChangeTracker.Entries<EntityBase>() )
+            foreach (var entry in ChangeTracker.Entries<EntityBase>())
             {
                 switch (entry.State)
                 {
