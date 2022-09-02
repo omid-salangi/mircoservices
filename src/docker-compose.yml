@@ -14,7 +14,8 @@ services:
     image: mcr.microsoft.com/mssql/server
  
   rabbitmq:
-    image: rabbitmq
+    image: rabbitmq:management-alpine
+
   pgadmin:
     image: dpage/pgadmin4:latest
 

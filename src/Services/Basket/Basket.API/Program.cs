@@ -2,8 +2,10 @@ using Basket.API.Common;
 using Basket.API.GrpcServices;
 using Catalog.API.WebFramework.Configuration;
 using Discount.Grpc.Protos;
+using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +25,19 @@ builder.Services.AddStackExchangeRedisCache(options =>
 });
 builder.DependencyContainerWithAutofac();
 
+builder.Services.AddMassTransit(config =>
+{
+    config.UsingRabbitMq((ctx, cfg) =>
+    {
+        cfg.Host(_sitesettings.EventBusSettings.HostAddress);
+    });
+});
+
+
+//builder.Services.AddMassTransitHostedService();
+
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddApiVersioning(config =>
 {
     config.DefaultApiVersion = new ApiVersion(2, 0);
@@ -36,6 +51,7 @@ builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(
     o.Address = new Uri(_sitesettings.GrpcSettings.DiscountUrl);
 });
 builder.Services.AddScoped<DiscountGrpcService>(); // i dont know why autofac dont work
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

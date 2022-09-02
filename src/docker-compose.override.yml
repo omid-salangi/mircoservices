@@ -93,8 +93,10 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - "SiteSettings:RedisSettings:ConnectionString=basketdb:6379"
       - "SiteSettings:GrpcSettings:DiscountUrl=http://discount.grpc"
+      - "EventBusSettings:HostAddress=amqp://guest:guest@rabbitmq:5672"
     depends_on:
       - basketdb
+      - rabbitmq
     ports:
       - "8001:80"
  
@@ -125,7 +127,10 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "ConnectionStrings:OrderingConnectionString=Server=host.docker.internal;Database=OrderDb;User Id=sa;Password=SwN12345678;"
+      - "EventBusSettings:HostAddress=amqp://guest:guest@rabbitmq:5672"
+    restart: always
     depends_on:
       - orderdb
+      - rabbitmq
     ports:
       - "8004:80"
