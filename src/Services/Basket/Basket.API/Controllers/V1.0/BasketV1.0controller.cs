@@ -57,7 +57,7 @@ namespace Basket.API.Controllers.V1._0
 
         [HttpPost( "Checkout")]
         [ProducesResponseType(typeof(void), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> CheckOut([FromBody] BasketCheckOutEvent basketCheckOut)
+        public async Task<IActionResult> CheckOut([FromBody] BasketCheckout basketCheckOut)
         {
            
             var basket = await _repository.GetBasket(basketCheckOut.UserName);
@@ -68,6 +68,7 @@ namespace Basket.API.Controllers.V1._0
 
             var eventMessage = _mapper.Map<BasketCheckOutEvent>(basketCheckOut);
             eventMessage.TotalPrice = basket.TotalPrice;
+            // send event 
             await _publish.Publish(eventMessage);
 
             await _repository.DeleteBasket(basket.UserName);

@@ -10,7 +10,7 @@ namespace Ordering.API.EventBusConsumer
         private readonly IMapper _mapper;
         private readonly IMediator _mediator;
         private readonly ILogger<BasketCheckoutConsumer> _logger;
-
+         
         public BasketCheckoutConsumer(IMapper mapper, IMediator mediator, ILogger<BasketCheckoutConsumer> logger)
         {
             _mapper = mapper ;
