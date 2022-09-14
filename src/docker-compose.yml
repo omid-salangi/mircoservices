@@ -69,7 +69,7 @@ services:
     image: ${DOCKER_REGISTRY-}shoppingaggregator
     build:
       context: .
-      dockerfile: ApiGateways/Shopping.Aggregator/Dockerfile
+      dockerfile: ApiGateWays/Shopping.Aggregator/Dockerfile
 
 volumes:
   mongo_data:
